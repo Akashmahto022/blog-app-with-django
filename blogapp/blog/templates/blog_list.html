@@ -1,0 +1,22 @@
+{% extends 'layout.html' %} {% block title %} Blog App {% endblock %} 
+
+{% block content %}
+
+<a class="btn btn-primary mt-4" href="{% url 'blog_create' %}">Create Blog</a>
+<div class="container row gap-3 mt-4">
+  {% for blog in blogs %}
+  <div class="card" style="width: 18rem">
+    <img src="{{blog.photo.url}}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{blog.user.username}}</h5>
+      <h5 class="card-title">{{blog.title}}</h5>
+      <p class="card-text">{{blog.description}}</p>
+      <a href="{% url 'blog_edit' blog.id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger"
+        >Delete</a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
