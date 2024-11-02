@@ -5,7 +5,13 @@
     Blog App
 {% endblock %}
 
-{% block content %}
-    <h1 class="text-center text-white mt-4">Welcome to out blog app</h1>
+{% block content %} 
+    <h1 class="text-center text-white mt-4">Are you sure that you want to delete this blog ?</h1>
+ 
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a class="btn btn-success" href="{% url 'blog_list' %}">Cancel</a>
+    </form>
 {% endblock %}
     
