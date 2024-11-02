@@ -32,7 +32,7 @@ def blog_edit(request, blog_id):
             blog = form.save(commit=False)
             blog.user = request.user
             blog.save()
-            return redirect('blog-list')
+            return redirect('blog_list')
     else:
         form = BlogForm(instance=blog)
         return render(request, 'blog_form.html', {'form':form})
@@ -42,6 +42,7 @@ def blog_delete(request, blog_id):
     blog = get_object_or_404(Blog, pk=blog_id, user = request.user)
     if request.method == 'POST':
         blog.delete()
-        return redirect('blog-list')
+        return redirect('blog_list')
+    
     return render(request, 'blog_confir_delete.html', {'blog':blog})
     
